@@ -1,0 +1,49 @@
+{% extends "dashboard_layout.html" %} {% block body %}
+<div class="home-content">
+  <div class="link-boxes">
+    <div class="recent-link box">
+      <div class="title">Your shortened links</div>
+      <div class="link-details">
+        <table>
+          <thead class="theading">
+            <tr>
+              <th class="topic">Date</th>
+              <th class="topic">Title</th>
+              <th class="topic">Links</th>
+              <th class="topic">Total clicks</th>
+<!--               <th class="topic">Status</th> -->
+              <th class="topic">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for url in url_data %}
+            <tr>
+              <td>{{url.created_on.strftime('%d-%m-%Y')}}</td>
+              <td>{{url.title}}</td>
+              <td>
+                <a href="http://127.0.0.1:8000/{{url.key}}" target="_blank"
+                  >brandly/{{url.key}}</a
+                >
+                <!-- <p>{{url.target_url}}</p> -->
+              </td>
+              <td>{{url.click_count}}</td>
+              <!-- {% if url.is_active == True %}
+              <td style="color: green;">
+                Active
+              </td>
+              {% else %}
+              <td style="color: red;">
+               Deleted
+              </td>
+              {% endif %} -->
+              
+              <td><a href="/custom/{{url.id}}" class="edit-btn">Edit</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
