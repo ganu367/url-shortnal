@@ -1,9 +1,11 @@
 {
     "devCommand":"gunicorn -w 4 -k uvicorn.workers.UvicornWorker main_gunicorn:app",
+    "version":2,
     "builds": [
       {
         "src": "main.py",
-        "use": "@vercel/python"
+        "use": "@vercel/python",
+        "config":{"runtime":"python3.11"}
       }
     ],
     "routes": [
