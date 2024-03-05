@@ -10,11 +10,9 @@
     <title>{{ title }}</title>
     {% block more_css %}
     {% endblock %}
-<<<<<<< HEAD
   <link rel="stylesheet" href="https://brandly.azurewebsites.net/static/css/dashboard.css">
-=======
+
   <link rel="stylesheet" href="{{url_for('static',path='/css/dashboard.css')}}">
->>>>>>> 0209368 (responsive sited)
   </head>
 
   <body>
@@ -66,6 +64,5 @@
   {% endblock %}
 
   <script src="{{url_for('static',path='/js/dashboard.js')}}"></script>
->>>>>>> 0209368 (responsive sited)
 </body>
 </html>

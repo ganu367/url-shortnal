@@ -80,3 +80,4 @@ faqHeaders.forEach((header, i) => {
     }
   });
 });
+

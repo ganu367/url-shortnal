@@ -103,23 +103,6 @@ const setError = (message) => {
   errorMessage.style.display = "block";
   errorMessage.innerText = message;
 }
-
-// Password toggle function
-function myPassword() {
-  var passwordHideIcon = document.getElementById("hide-password-icon");
-  var passwordShowIcon = document.getElementById("show-password-icon");
-  var passwordInput = document.getElementById("pass");
-
-<<<<<<< HEAD
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    passwordShowIcon.style.display = "none";
-    passwordHideIcon.style.display = "block";
-  } else { 
-    passwordInput.type = "password";
-    passwordShowIcon.style.display = "block";
-    passwordHideIcon.style.display = "none";
-=======
 //pasword toggel function
 function myPassowrd(){
     var passwordHideIcon = document.getElementById("hide-password-icon");
@@ -136,6 +119,5 @@ function myPassowrd(){
         passwordShowIcon.style.display = "block"
         passwordHideIcon.style.display = "none"
     }
->>>>>>> 0209368 (responsive sited)
   }
-}
+
