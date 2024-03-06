@@ -1,3 +1,4 @@
 .env
 /del.py
 /shortnal-db.db
+.vercel
