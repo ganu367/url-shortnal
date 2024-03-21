@@ -1,25 +1,12 @@
 {
-  "devCommand": "gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app",
-  "version": 2,
+
   "builds": [
-    {
-      "src": "main.py",
-      "use": "@vercel/python",
-      "config": {
-        "runtime": "python3.8",
-        "includeFiles": ["main.py", "requirements.txt"],
-        "buildCommand": "pip install -r requirements.txt -t .",
-        "env": {
-          "PYTHONUNBUFFERED": "1",
-          "PYTHONDONTWRITEBYTECODE": "1"
-        }
-      }
-    }
+    { "src": "main.py", "use": "@vercel/python" }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "main.py"
-    }
-  ]
+    { "src": "/(.*)", "dest": "/main.py" }
+  ],
+  "env": {
+    "APP_MODULE": "main:app"
+  }
 }
