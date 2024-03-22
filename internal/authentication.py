@@ -34,7 +34,7 @@ get_db = database.get_db
 
 
 @router.post("/login")
-def login(response: Response, request: Request, request_detail: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+async def login(response: Response, request: Request, request_detail: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     val_user = db.query(models.User).filter(
         models.User.username == request_detail.username)
 
@@ -71,7 +71,7 @@ def login(response: Response, request: Request, request_detail: OAuth2PasswordRe
 
 
 @router.put("/update-password", status_code=status.HTTP_202_ACCEPTED)
-def updatePassword(request: schemas.UserPassword, db: Session = Depends(get_db), current_user: schemas.UserCreate = Depends(oauth2.get_current_user)):
+async def updatePassword(request: schemas.UserPassword, db: Session = Depends(get_db), current_user: schemas.UserCreate = Depends(oauth2.get_current_user)):
     _username_ = current_user.user["username"]
 
     val_user = db.query(models.User).filter(
@@ -97,7 +97,7 @@ def updatePassword(request: schemas.UserPassword, db: Session = Depends(get_db),
 
 
 @router.put("/forget-password/{username}", status_code=status.HTTP_202_ACCEPTED)
-def forgetPassword(username: str, request: schemas.ForgetPassword, db: Session = Depends(get_db)):
+async def forgetPassword(username: str, request: schemas.ForgetPassword, db: Session = Depends(get_db)):
     val_user = db.query(models.User).filter(
         models.User.username == username).first()
 
@@ -115,7 +115,7 @@ def forgetPassword(username: str, request: schemas.ForgetPassword, db: Session =
             return {f"Password successfully updated"}
         
 @router.get("/logout")
-def logout(response: Response, request: Request):
+async def logout(response: Response, request: Request):
     response = RedirectResponse("/login", status_code=302)
     response.delete_cookie(key='access_token')  # Corrected key
     return response

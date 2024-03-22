@@ -23,7 +23,7 @@ get_db = database.get_db
 
 
 @router.post("/contact-us", status_code=200)
-def contactUs(request: Request, contacts_fields: schemas.contactUsCreate, db: Session = Depends(get_db)):
+async def contactUs(request: Request, contacts_fields: schemas.contactUsCreate, db: Session = Depends(get_db)):
     get_user = db.query(models.User).filter(
         models.User.username == contacts_fields.email)
 

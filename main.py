@@ -44,35 +44,35 @@ app.add_middleware(
 
 
 @app.get("/", response_class=HTMLResponse)
-def home(request: Request):
+async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "title": "Brandly | URL Shortnal-Shorten your links with ease using our free URL shortener"})
 
 
 @app.get("/login", response_class=HTMLResponse)
-def loginUser(request: Request):
+async def loginUser(request: Request):
     return templates.TemplateResponse("signin.html", {"request": request, "title": "Login"})
 
 
 @app.get("/register", response_class=HTMLResponse)
-def loginUser(request: Request):
+async def loginUser(request: Request):
     return templates.TemplateResponse("sign_up.html", {"request": request, "title": " Sign Up"})
 
 
 @app.get("/services", response_class=HTMLResponse)
-def services(request: Request):
+async def services(request: Request):
     return templates.TemplateResponse("services.html", {"request": request, "title": "Our Services"})
 
 @app.get("/about-us", response_class=HTMLResponse)
-def about_us(request: Request):
+async def about_us(request: Request):
     return templates.TemplateResponse("about_us.html", {"request": request, "title": "Brandly |Who we are"})
 
 @app.get("/contact_us", response_class=HTMLResponse)
-def contactUs(request: Request):
+async def contactUs(request: Request):
     return templates.TemplateResponse("contact_us.html", {"request": request, "title": "Contact Us"})
 
 
 @app.get("/dashboard", response_class=HTMLResponse)
-def dashboard(request: Request,db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None),):
+async def dashboard(request: Request,db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None),):
 
     if access_token is None:
         return RedirectResponse("/login")
@@ -96,7 +96,7 @@ def dashboard(request: Request,db: Session = Depends(get_db),access_token: Optio
     )
 
 @app.get("/create", response_class=HTMLResponse)
-def create(request: Request,db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None),):
+async def create(request: Request,db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None),):
 
     if access_token is None:
         return RedirectResponse("/login")
@@ -112,7 +112,7 @@ def create(request: Request,db: Session = Depends(get_db),access_token: Optional
 
 
 @app.get("/custom/{id}", response_class=HTMLResponse)
-def custom(id:int,request: Request,db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None),):
+async def custom(id:int,request: Request,db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None),):
 
     if access_token is None:
         return RedirectResponse("/login")

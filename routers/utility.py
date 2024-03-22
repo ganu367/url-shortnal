@@ -29,7 +29,7 @@ def updateCount(url_key: str, click_count_update: schemas.UrlUpdateCount, db: Se
 
 
 @router.get("/{url_key}")
-def forwadToRedirect(url_key: str, request: Request, db: Session = Depends(get_db)):
+async def forwadToRedirect(url_key: str, request: Request, db: Session = Depends(get_db)):
     get_url = db.query(models.URL).filter(
         models.URL.key == url_key)
 

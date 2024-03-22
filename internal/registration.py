@@ -19,7 +19,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 @router.post("/register")
-def create_user(response: Response, request: Request, user_field: schemas.UserCreate, db: Session = Depends(get_db)):
+async def create_user(response: Response, request: Request, user_field: schemas.UserCreate, db: Session = Depends(get_db)):
     val_user = db.query(models.User).filter(
         models.User.username == user_field.username)
 

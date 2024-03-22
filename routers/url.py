@@ -35,7 +35,7 @@ get_db = database.get_db
 
 
 @router.post("/home/app", status_code=200)
-def createUShort(url_fields: schemas.UrlCreate, db: Session = Depends(get_db)):
+async def createUShort(url_fields: schemas.UrlCreate, db: Session = Depends(get_db)):
     get_url = db.query(models.URL).filter(
         models.URL.target_url == url_fields.original_url)
 
@@ -65,7 +65,7 @@ def createUShort(url_fields: schemas.UrlCreate, db: Session = Depends(get_db)):
 
 
 @router.post("/create-url-short")
-def createUrlShort(url_fields: schemas.UrlCreate, db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None)):
+async def createUrlShort(url_fields: schemas.UrlCreate, db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None)):
     
     if access_token is None:
         return RedirectResponse("/login")
@@ -112,7 +112,7 @@ def createUrlShort(url_fields: schemas.UrlCreate, db: Session = Depends(get_db),
                 status_code=status.HTTP_400_BAD_REQUEST, detail="User not found")
 
 @router.get("/get-all-url")
-def allUrl(db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None)):
+async def allUrl(db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None)):
     if access_token is None:
         return RedirectResponse("/login")
     
@@ -143,7 +143,7 @@ def allUrl(db: Session = Depends(get_db),access_token: Optional[str] = Cookie(No
 
 
 @router.put("/custom-url/{url_id}")
-def customUrl(url_id: int, url_fields: schemas.UrlUpdate, db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None)):
+async def customUrl(url_id: int, url_fields: schemas.UrlUpdate, db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None)):
     if access_token is None:
         return RedirectResponse("/login")
     
@@ -184,7 +184,7 @@ def customUrl(url_id: int, url_fields: schemas.UrlUpdate, db: Session = Depends(
                 status_code=status.HTTP_400_BAD_REQUEST, detail=f"User not found")
 
 @router.put("/delete-url/{url_id}")
-def deleteLinked(url_id: int, db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None)):
+async def deleteLinked(url_id: int, db: Session = Depends(get_db),access_token: Optional[str] = Cookie(None)):
     if access_token is None:
         return RedirectResponse("/login")
     
