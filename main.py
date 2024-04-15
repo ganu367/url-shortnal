@@ -62,9 +62,15 @@ async def loginUser(request: Request):
 async def services(request: Request):
     return templates.TemplateResponse("services.html", {"request": request, "title": "Our Services"})
 
+@app.get("/pricing", response_class=HTMLResponse)
+async def pricing(request: Request):
+    return templates.TemplateResponse("pricing.html", {"request": request, "title": "Pricing | Engage your audience"})
+
+
 @app.get("/about-us", response_class=HTMLResponse)
 async def about_us(request: Request):
     return templates.TemplateResponse("about_us.html", {"request": request, "title": "Brandly |Who we are"})
+
 
 @app.get("/contact_us", response_class=HTMLResponse)
 async def contactUs(request: Request):

@@ -25,7 +25,6 @@ shortLinkBtn.addEventListener('click', function() {
         shortUrlDiv.style.display="block";
         shortUrlText.value = response.url_short;
         
-        //input empty
         longUrlInput.value = '';
     }else{
       var errorMessage = document.getElementById('error-message');

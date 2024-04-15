@@ -37,18 +37,15 @@ get_db = database.get_db
 async def login(response: Response, request: Request, request_detail: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     val_user = db.query(models.User).filter(
         models.User.username == request_detail.username)
-
-    if not val_user.first():
+    
+    if  val_user.first() is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail="User does not exists")
-
+                            detail=f"User does not exists")
     else:
-        # verify password between requesting by a user & database password
         if not hashing.Hash.verify(val_user.first().password, request_detail.password):
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                                detail="Incorrect Passwords")
+            raise HTTPException(status_code=status.HTTP_302_FOUND,
+                                detail=f"Password does not match")
         else:
-
             jwt_token = tokens.create_access_token(data={"user": {
                 "username": val_user.first().username, "isAdmin": val_user.first().is_admin}})
 

@@ -42,22 +42,18 @@ sign_up_form.addEventListener('submit', (event) => {
         successMessage.style.display = "block";
         successMessage.innerHTML = 'Successfully! Your account has been created. Please Login';
     
-        //clear the text fields after successfully submited the signup form
         document.getElementById('name').value = '';
         document.getElementById('username').value = '';
         document.getElementById('pass').value = '';
         document.getElementById('re-pass').value = '';
 
-        console.log("status is ",response.status);
       }else{
         var errorMessage = document.getElementById('error-message');
         errorMessage.classList.add("show-message");
         errorMessage.style.display = "block";
         errorMessage.innerHTML = response.detail;
 
-        console.log("internal error hain",response.detail);
     
-        //clear the text fields after successfully submited the signup form
         document.getElementById('name').value = nameValue;
         document.getElementById('username').value = usernameValue;
         document.getElementById('pass').value = passwordValue;
@@ -70,7 +66,6 @@ sign_up_form.addEventListener('submit', (event) => {
       errorMessage.style.display = "block";
       errorMessage.innerHTML = error.message;
   
-       //clear the text fields after successfully submited the form
        document.getElementById('name').value = '';
        document.getElementById('username').value = '';
        document.getElementById('pass').value = '';
@@ -83,7 +78,7 @@ sign_up_form.addEventListener('submit', (event) => {
       var errorMessage = document.getElementById('error-message');
       successMessage.style.display = "none";
       errorMessage.style.display = "none";
-    }, 1500);
+    }, 4000);
   }
 });
 

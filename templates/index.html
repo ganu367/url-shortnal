@@ -2,59 +2,42 @@
 
 <section class="intro">
   <div class="intro-row">
-    <h1>
-      <!-- Shareble, <br />
-      Customizable & <span> URL </span> <br />
-      Management tools -->
-     Create short URL  <br />with brand<span>l</span>y
-    </h1>
-    <p>
-      Explore our URL shortener tools that prioritize security and scalability.
-      Protect your links with strong encryption.
-    </p>
+    <h1>Trim your long URL in <strong>3</strong> <span>Secconds!</span></h1>
+    <!-- <p>
+      Make custom Short URLs,QR Codes for your solution & share it anywhere.
+      Hassle free !
+    </p> -->
     <div class="btn-items">
-      <input
-        type="url"
-        class="link-enter"
-        placeholder="Paste here long url"
-        id="lng-url-text"
-        required
-      />
+      <div class="input-items">
+
+      <input type="url" class="link-enter" placeholder="Paste long here" id="lng-url-text" required />
       <button class="btn" id="shrt-lnk-btn" type="submit">Short It</button>
+    </div>
       <div id="error-message" class="hidden"></div>
     </div>
     <div class="btn-items" id="cpy-url-div">
-      <input
-        type="url"
-        class="link-enter"
-        id="shrt-url-text"
-        value=""
-        readonly
-      />
-      <button class="btn" id="shrt-cpy-btn">
-        <i class="bx bxs-copy-alt"></i>
-      </button>
+      <div class="input-items">
+        <input type="url" class="link-enter" id="shrt-url-text" value="" readonly />
+        <button class="btn" id="shrt-cpy-btn">
+          <i class="bx bxs-copy-alt"></i>
+        </button>
+      </div>
     </div>
   </div>
-  <div class="img-intro">
-    <img
-      src="{{url_for('static',path='images/url_short.svg')}}"
-      alt=""
-      srcset=""
-    />
-  </div>
 </section>
-<hr>
 <section class="features" id="services">
-  <!-- <h1>Our  Features</h1> -->
-
+  <h2>Our Features At Your Fingertips</h2>
+  <p class="sub-para para-features">
+    Simplify your experience with our user-friendly dashboard, where everything
+    is <span>free of cost</span>
+  </p>
   <div class="fs-row">
     <div class="fs-items">
       <div class="fs-icons">
         <i class="bx bx-analyse"></i>
       </div>
-      <h2 class="sub-head">Click tracking and analytics</h2>
-      <p class="sub-para">
+      <h2 class="sub-head">Insights and Analytics</h2>
+      <p class="sub-para ">
         Find insights through click tracking and analytics.
       </p>
     </div>
@@ -73,25 +56,12 @@
       </div>
       <h2 class="sub-head">Easy to Share</h2>
       <p class="sub-para">
-        Optimize links and connections with easy-to-share URLs
+        Optimize links and connections with easy-to-share URLs.
       </p>
     </div>
   </div>
 </section>
-<!-- <section class="news-letter">
-  <div class="new-letter-box">
-    <h2 class="sub-head">Subscribe to our Newsletter</h2>
-    <p class="sub-para">
-      Stay in the loop! Subscribe to our newsletter to get the latest update and
-      exclusives,insights,delivered right to your email inbox.
-    </p>
-  </div>
-  <div class="btn-items">
-    <input type="text" name="em-add" placeholder="Enter valid email address" />
-    <a href="" class="btn">Submit</a>
-  </div>
-</section> -->
-<!-- faq -->
+
 <section id="faq-section">
   <div class="faqs-container">
     <h2>Frequently Asked Questions</h2>
@@ -105,7 +75,8 @@
         </div>
         <div class="content">
           <p>
-            A URL shortener is a tool that converts long URLs into shorter, more manageable links.
+            A URL shortener is a tool that converts long URLs into shorter, more
+            manageable links.
           </p>
         </div>
       </div>
@@ -119,34 +90,38 @@
 
         <div class="content">
           <p>
-            URL shorteners are useful for sharing links on platforms with character limits, making links more user-friendly.
+            URL shorteners are useful for sharing links on platforms with
+            character limits, making links more user-friendly.
           </p>
         </div>
       </div>
 
       <div class="content-container">
         <div class="faq-header">
-          <h3> Use a custom URL for social media sharing?</h3>
+          <h3>Use a custom URL for social media sharing?</h3>
           <span class="open active">+</span>
           <span class="close">-</span>
         </div>
 
         <div class="content">
           <p>
-            Yes, custom URLs are commonly used for social media sharing to enhance brand visibility and provide concise links.
+            Yes, custom URLs are commonly used for social media sharing to
+            enhance brand visibility and provide concise links.
           </p>
         </div>
       </div>
       <div class="content-container">
         <div class="faq-header">
-          <h3> Benefits of customizing a URL?</h3>
+          <h3>Benefits of customizing a URL?</h3>
           <span class="open active">+</span>
           <span class="close">-</span>
         </div>
 
         <div class="content">
           <p>
-            Customizing URLs enhances brand visibility, increases link trustworthiness, and makes links more memorable  </p>
+            Customizing URLs enhances brand visibility, increases link
+            trustworthiness, and makes links more memorable
+          </p>
         </div>
       </div>
     </div>
@@ -158,5 +133,4 @@
 {% endblock %} -->
 {% block more_js %}
 <script src="{{url_for('static',path='js/index.js')}}"></script>
-{% endblock %} 
-{% endblock %}
+{% endblock %} {% endblock %}
